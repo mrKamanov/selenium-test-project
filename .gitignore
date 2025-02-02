@@ -1,0 +1,17 @@
+# Временные файлы Python
+*.pyc
+__pycache__/
+
+# Виртуальное окружение
+env/
+venv/
+
+# Файлы IDE
+.vscode/
+.idea/
+
+# Логи
+*.log
+
+# Файлы macOS
+.DS_Store
