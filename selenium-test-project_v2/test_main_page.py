@@ -1,21 +1,18 @@
+import pytest
 from pages.main_page import MainPage
 from pages.login_page import LoginPage
 from pages.basket_page import BasketPage
 
+@pytest.mark.need_review
 def test_guest_can_go_to_login_page(browser):
     link = "http://selenium1py.pythonanywhere.com"
     main_page = MainPage(browser, link)
     main_page.open()
-    # === Первый подход: Используем возвращаемое значение из go_to_login_page ===
-    # Если вы хотите использовать первый подход, раскомментируйте следующие строки:
-    # login_page = main_page.go_to_login_page()
-    # login_page.should_be_login_page()
-    # === Второй подход: Явно инициализируем LoginPage в тесте ===
-    # Это основной вариант. Оставьте эти строки активными для второго подхода:
     main_page.go_to_login_page()
     login_page = LoginPage(browser, browser.current_url)
     login_page.should_be_login_page()
 
+@pytest.mark.need_review
 def test_guest_should_see_login_link(browser):
     link = "http://selenium1py.pythonanywhere.com"
     page = MainPage(browser, link)
@@ -23,6 +20,7 @@ def test_guest_should_see_login_link(browser):
     page.should_be_login_link()
 
 # Новый тест: проверка пустой корзины с главной страницы
+@pytest.mark.need_review
 def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
     link = "http://selenium1py.pythonanywhere.com"
     page = MainPage(browser, link)
