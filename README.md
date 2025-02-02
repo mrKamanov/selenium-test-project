@@ -20,7 +20,7 @@
 ---
 
 ## **Структура проекта**
-selenium-test-project/
+selenium-test-project_v2/
 
 ├── pages/ # Классы страниц (Page Objects)
 
