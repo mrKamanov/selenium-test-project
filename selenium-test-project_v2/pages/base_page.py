@@ -1,7 +1,7 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
-from .locators import BasePageLocators  # Импортируем BasePageLocators
+from .locators import BasePageLocators
 
 class BasePage:
     def __init__(self, browser, url, timeout=10):
@@ -29,21 +29,16 @@ class BasePage:
             return True
         return False
 
-    def is_disappeared(self, how, what, timeout=4):
-        """Проверяет, что элемент исчезает со страницы в течение заданного времени"""
-        try:
-            WebDriverWait(self.browser, timeout, 1, TimeoutException).until_not(
-                EC.presence_of_element_located((how, what))
-            )
-        except TimeoutException:
-            return False
-        return True
-
     def go_to_login_page(self):
         """Переходит на страницу логина"""
-        link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)  # Используем BasePageLocators
-        link.click()
+        login_link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
+        login_link.click()
 
     def should_be_login_link(self):
         """Проверяет наличие ссылки на страницу логина"""
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
+
+    def go_to_basket_page(self):
+        """Переходит на страницу корзины"""
+        basket_link = self.browser.find_element(*BasePageLocators.BASKET_LINK)
+        basket_link.click()
