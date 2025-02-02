@@ -8,9 +8,11 @@ class BasePage:
         self.browser.implicitly_wait(timeout)
 
     def open(self):
+        """Открывает страницу"""
         self.browser.get(self.url)
 
     def is_element_present(self, how, what):
+        """Проверяет наличие элемента на странице"""
         try:
             self.browser.find_element(how, what)
         except NoSuchElementException:

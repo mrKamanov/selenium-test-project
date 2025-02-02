@@ -6,12 +6,12 @@ __pycache__/
 env/
 venv/
 
+# Логи
+*.log
+
 # Файлы IDE
 .vscode/
 .idea/
 
-# Логи
-*.log
-
-# Файлы macOS
+# macOS
 .DS_Store
