@@ -5,7 +5,6 @@
 # 2. Второй подход: Явно инициализируем LoginPage в тесте.
 #    Это основной вариант. Оставьте эти строки активными для второго подхода.
 
-import pytest
 from pages.main_page import MainPage
 from pages.login_page import LoginPage
 
