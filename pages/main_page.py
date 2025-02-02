@@ -7,8 +7,11 @@
 
 from .base_page import BasePage
 from .locators import MainPageLocators
+from .base_page import BasePage
+from .locators import MainPageLocators
 # Для первого подхода импортируем LoginPage
 # from .login_page import LoginPage
+from selenium.common.exceptions import NoAlertPresentException
 
 class MainPage(BasePage):
     def go_to_login_page(self):
@@ -16,8 +19,15 @@ class MainPage(BasePage):
         login_link = self.browser.find_element(*MainPageLocators.LOGIN_LINK)
         login_link.click()
 
+        # Обработка alert (если он появляется)
+        try:
+            alert = self.browser.switch_to.alert
+            alert.accept()
+        except NoAlertPresentException:
+            pass  # Alert не появился
+
         # === Первый подход: Возвращаем объект LoginPage ===
-        # Раскомментируйте следующую строку для первого подхода
+        # Если вы хотите использовать первый подход, раскомментируйте следующую строку:
         # return LoginPage(browser=self.browser, url=self.browser.current_url)
 
     def should_be_login_link(self):

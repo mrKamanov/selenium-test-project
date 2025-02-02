@@ -15,12 +15,12 @@ def test_guest_can_go_to_login_page(browser):
     main_page.open()
 
     # === Первый подход: Используем возвращаемое значение из go_to_login_page ===
-    # Раскомментируйте следующие строки для первого подхода
+    # Если вы хотите использовать первый подход, раскомментируйте следующие строки:
     # login_page = main_page.go_to_login_page()
     # login_page.should_be_login_page()
 
     # === Второй подход: Явно инициализируем LoginPage в тесте ===
-    # Раскомментируйте следующие строки для второго подхода
+    # Это основной вариант. Оставьте эти строки активными для второго подхода:
     main_page.go_to_login_page()
     login_page = LoginPage(browser, browser.current_url)
     login_page.should_be_login_page()
